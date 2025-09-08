@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Greeting For You!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Pacifico&display=swap');
+
+        :root {
+            --primary-color: #ff69b4; /* Pink */
+            --secondary-color: #ff1493; /* Deep Pink */
+            --text-color: #f0f0f0;
+            --bg-color: #1a1a2e; /* Dark Blue-Purple */
+            --card-bg: #2a2a4a;
+            --border-radius: 15px;
+            --transition-speed: 0.5s ease-in-out;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            line-height: 1.6;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUpFadeIn 0.8s forwards 0.3s;
+        }
+
+        @keyframes slideUpFadeIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h1, h2 {
+            font-family: 'Pacifico', cursive;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .heart {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            transform: rotate(-45deg);
+            animation: floatHearts 6s infinite ease-in-out;
+            opacity: 0;
+            z-index: -1;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: 10px;
+        }
+
+        @keyframes floatHearts {
+            0% { transform: translateY(0) rotate(-45deg) scale(0); opacity: 0; }
+            20% { opacity: 1; transform: translateY(-50px) rotate(-45deg) scale(1); }
+            100% { transform: translateY(-200px) rotate(-45deg) scale(1.2); opacity: 0; }
+        }
+
+        .heart.red { background-color: #ff0000; }
+        .heart.red::before, .heart.red::after { background-color: #ff0000; }
+        .heart.pink { background-color: var(--primary-color); }
+        .heart.pink::before, .heart.pink::after { background-color: var(--primary-color); }
+        .heart.small { transform: scale(0.6) rotate(-45deg); }
+        .heart.medium { transform: scale(0.8) rotate(-45deg); }
+        .heart.large { transform: scale(1) rotate(-45deg); }
+
+        .emoji {
+            font-size: 3em;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="template template1" id="template1">
+         <div class="background-gradient"></div>
+         <img src="C:\Users\renuk\Downloads\images\Generated Image September 06, 2025 - 3_36PM.jpeg" alt="Welcome Image" class="template-image">
+         <h1 class="main-text">WELCOME MY IDIOT</h1>
+         <button class="continue-button" onclick="showTemplate(2)">Continue</button>
+</div>
+<div class="template template2" id="template2">
+            <div class="background-hearts"></div>
+            <div class="pookie-stickers">
+                <img src="path/to/your/pookie_white.png" alt="White Pookie" class="pookie white-pookie">
+                <img src="path/to/your/pookie_brown.png" alt="Brown Pookie" class="pookie brown-pookie">
+            </div>
+            <h1 class="main-text">I ACTUALLY HATE U BECAUSE U DON'T GIVE ANY ATTENTION TO MY EFFORTS</h1>
+            <button class="continue-button" onclick="showTemplate(3)">Continue</button>
+        </div>
+
+        <!-- Template 3 (initially hidden) -->
+        <div id="template3" class="template question-template">
+            <h1 class="question-title">Choose your answer:</h1>
+            <div class="question-options">
+                <button class="question-button" onclick="showQuestionResult('love')">LOVE ❤️💋</button>
+                <button class="question-button" onclick="showQuestionResult('time')">TIME ⏰🕰️</button>
+                <button class="question-button" onclick="showQuestionResult('efforts')">EFFORTS 💪💖</button>
+                <button class="question-button" onclick="showQuestionResult('anger')">ANGER 😠😡</button>
+                <button class="question-button" onclick="showQuestionResult('possessive')">POSSESSIVE 😳❤️</button>
+            </div>
+             <button class="continue-button" onclick="showTemplate(4)">Continue</button>
+        </div>
+
+        <!-- Question Result Templates (initially hidden) -->
+        <div id="question-love" class="template question-result">
+            <img src="path/to/your/heart_arrow.png" alt="Love Arrow" class="result-image">
+            <p class="result-text">I DON'T AT ALL LOVE U. YOU ALWAYS MAKES THE THINGS WHICH MAKES ME ANGER. BUT STILL I LOVES THE THINGS AND EFFORTS U PUT FOR MY HAPPINESS</p>
+            <button class="continue-button" onclick="showTemplate(4)">Continue</button>
+        </div>
+        <div id="question-time" class="template question-result">
+             <img src="path/to/your/happiness_time_emojis.png" alt="Happiness Time" class="result-image">
+            <p class="result-text">U ARE GIVING THE ENOUGH TIME FOR ME. STILL U ARE GIVING ALL THE TIME TO ME EVEN U ARE TIRED AND THINKING A LOT TO SPEND A MORE TIME WITH ME</p>
+            <button class="continue-button" onclick="showTemplate(4)">Continue</button>
+        </div>
+        <div id="question-efforts" class="template question-result">
+            <img src="path/to/your/hearts_strength_emojis.png" alt="Hearts Strength" class="result-image">
+            <p class="result-text">U ARE NOT AT ALL PUTTING ANY EFFORTS FOR ME BUT STILL THE EFFORTS U PUT FOR ME TO MAKE MY DAY SPECIAL AND WITHOUT ANY TROUBLE IS REALLY THE WONDERFUL</p>
+            <button class="continue-button" onclick="showTemplate(4)">Continue</button>
+        </div>
+        <div id="question-anger" class="template question-result">
+            <img src="path/to/your/red_hearts.png" alt="Red Hearts" class="result-image">
+            <p class="result-text">U SHOUT A LOT WHEN U ARE ANGER AND NEVER LISTEN TO MY WORDS AND U DON'T EVEN GIVE ME A RESPECT AND EVEN U DON'T PAMPER ME BUT STILL AFTER EVERY FIGHT U DON'T LEAVE ME ALONE FOR A SINGLE DAY AND ACCEPTS ALL UR MISTAKES</p>
+            <button class="continue-button" onclick="showTemplate(4)">Continue</button>
+        </div>
+        <div id="question-possessive" class="template question-result">
+            <img src="path/to/your/shy_love_emojis.png" alt="Shy Love" class="result-image">
+            <p class="result-text">U DON'T HAVE A ANY POSSESSIVE FEELING U JUST ACT LIKE A ONE WHO DON'T EVEN CARE ME BUT STILL U CARES A LOT FOR ME</p>
+            <button class="continue-button" onclick="showTemplate(4)">Continue</button>
+        </div>
+
+        <!-- Template 4: College Photos -->
+        <div id="template4" class="template">
+            <img src="path/to/your/college_photos.png" alt="College Photos" class="template-image">
+            <h1 class="main-text">THE FIRST PLACE WE MET ❤️</h1>
+            <button class="continue-button" onclick="showTemplate(5)">Continue</button>
+        </div>
+
+        <!-- Template 5: Beach Photos -->
+        <div id="template5" class="template">
+            <img src="path/to/your/beach_photos.png" alt="Beach Photos" class="template-image">
+            <h1 class="main-text">THE FIRST PLACE WE WENT ❤️</h1>
+            <button class="continue-button" onclick="showTemplate(6)">Continue</button>
+        </div>
+
+        <!-- Template 6: Kiss Emojis - Trust Place -->
+        <div id="template6" class="template emoji-overlay-template">
+             <div class="kiss-emojis-container"></div>
+            <h1 class="main-text">I REALLY ENJOYED A LOT AND THE PLACE WHICH U GAIN MY TRUST 💋</h1>
+            <button class="continue-button" onclick="showTemplate(7)">Continue</button>
+        </div>
+
+        <!-- Template 7: Movie Hall -->
+        <div id="template7" class="template">
+            <img src="path/to/your/movie_hall.png" alt="Movie Hall" class="template-image">
+            <h1 class="main-text">THE SECOND PLACE WE WENT I KNOW THIS PLACE IS FULL OF FIGHT BUT LOVE IT ❤️</h1>
+            <button class="continue-button" onclick="showTemplate(8)">Continue</button>
+        </div>
+
+        <!-- Template 8: Kasu Mall, Dmart Ride -->
+        <div id="template8" class="template emoji-fall-template">
+            <div class="kiss-fall-container"></div>
+            <h1 class="main-text">DO YOU REMEMBER THIS DAY WHEN WE WENT OUT TO KASU MALL, DMART WITH SRAVANI AND ALSO A SMALL RIDE.</h1>
+            <button class="continue-button" onclick="showTemplate(9)">Continue</button>
+        </div>
+
+        <!-- Template 9: AI Couple on Bike -->
+        <div id="template9" class="template bike-reveal-template">
+            <img src="path/to/your/ai_couple_bike.png" alt="AI Couple on Bike" class="template-image bike-image">
+            <h1 class="main-text bike-text">THIS DAY IS REALLY AWESOME BECAUSE I LOVE TO WALK AND THIS TIME WE WALKED TO A DISTANCE AND I HAVE A FUNNY MEMORY AND SOME ANGRY BUT I DON'T WANT TO GIVE U THE REASON</h1>
+            <button class="continue-button" onclick="showTemplate(10)">Continue</button>
+        </div>
+
+        <!-- Template 10: Night Walk -->
+        <div id="template10" class="template">
+            <img src="path/to/your/night_walk_couple.png" alt="AI Couple Walking" class="template-image">
+            <h1 class="main-text">THE NIGHT WALK WHICH I LOVES THE MOST BUT THAT DAY WE BOTH HAD A FIGHT U DIDN'T EVEN TELL ME SORRY AND SCOLDING ME THAT EAT AND LEAVE I JUST HATE U BUT I LOVE THE NIGHT WALK TOGETHER ❤️</h1>
+            <button class="continue-button" onclick="showTemplate(11)">Continue</button>
+        </div>
+
+        <!-- Template 11: Bangles Falling - Temple Vibe -->
+        <div id="template11" class="template bangles-fall-template">
+            <img src="path/to/your/bangles_falling.png" alt="Bangles Falling" class="template-image">
+            <h1 class="main-text">THE TEMPLE VIBE WHERE I ENJOY A LOT AND THE U GIFTED ME SOMETHING SPECIAL</h1>
+            <button class="continue-button" onclick="showTemplate(12)">Continue</button>
+        </div>
+
+        <!-- Template 12: Waterfall -->
+        <div id="template12" class="template waterfall-template">
+            <img src="path/to/your/waterfall_photos.png" alt="Waterfall" class="template-image waterfall-image">
+            <h1 class="main-text">THE RECENT PLACE WE WENT I ENJOYED A LOT THROUGH OUT THE JOURNEY THE WAY WE WENT TO THE FARM IS QUIET SUPER AND THE WATER FALL IT'S REALLY A DREAM TO ME 💋</h1>
+            <button class="continue-button" onclick="showTemplate(13)">Continue</button>
+        </div>
+
+        <!-- Template 13: AI Couple Playing -->
+        <div id="template13" class="template">
+            <img src="path/to/your/ai_couple_playing.png" alt="AI Couple Playing" class="template-image">
+            <h1 class="main-text">I ENJOYED EVERY PHASE WITH U A LOT</h1>
+            <button class="continue-button" onclick="showTemplate(14)">Continue</button>
+        </div>
+
+        <!-- Template 14: Girl Sleep on Boy Shoulder -->
+        <div id="template14" class="template">
+            <img src="path/to/your/girl_sleep_shoulder.png" alt="Girl sleeping on shoulder" class="template-image">
+            <h1 class="main-text">EACH AND EVERY DAY IS SPECIAL WITH U</h1>
+            <button class="continue-button" onclick="showTemplate(15)">Continue</button>
+        </div>
+
+        <!-- Template 15: Last Template - Holding Hands -->
+        <div id="template15" class="template">
+            <img src="path/to/your/ai_couple_holding_hands.png" alt="AI Couple Holding Hands" class="template-image">
+            <h1 class="main-text">THANK U IDIOT STILL I HATE U A LOT FOR THE THINGS U DO 💋</h1>
+        </div>
+    </div>
+
+<script>
+    function showTemplate(num) {
+        const templates = document.querySelectorAll('.template');
+        templates.forEach(template => template.style.display = 'none');
+        document.getElementById('template' + num).style.display = 'block';
+    }
+
+    function showNo() {
+        const templates = document.querySelectorAll('.template');
+        templates.forEach(template => template.style.display = 'none');
+        document.getElementById('noTemplate').style.display = 'block';
+    }
+
+    // Start with the first template
+    showTemplate(1);
+</script>
+
+</body>
+</html>
